@@ -1,0 +1,66 @@
+<Page x:Class="FoodWasteRelief.Views.Pages.ProductsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:controls="clr-namespace:FoodWasteRelief.Controls"
+      Background="{StaticResource PageBackgroundBrush}">
+    <Grid Margin="18">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border x:Name="ProductsErrorBanner" Grid.Row="0" Visibility="Collapsed" Margin="0,0,0,10" Padding="12,8"
+                Background="#F8D7DA" BorderBrush="#F5C2C7" BorderThickness="1" CornerRadius="6">
+            <TextBlock x:Name="ProductsErrorText" Foreground="#842029" TextWrapping="Wrap"/>
+        </Border>
+
+        <Border Grid.Row="1" Style="{StaticResource CardBorder}">
+            <DockPanel LastChildFill="False">
+                <TextBox x:Name="SearchBox" Width="320" Style="{StaticResource ModernTextBox}" TextChanged="SearchBox_TextChanged"/>
+                <ComboBox x:Name="TypeFilterBox" Width="180" Margin="12,0,0,0" Style="{StaticResource ModernComboBox}" SelectionChanged="TypeFilterBox_SelectionChanged">
+                    <ComboBoxItem Content="Tous" IsSelected="True"/>
+                    <ComboBoxItem Content="vente"/>
+                    <ComboBoxItem Content="don"/>
+                </ComboBox>
+                <Button x:Name="BtnAddProduct" Content="Nouveau produit" Style="{StaticResource PrimaryButton}" Margin="12,0,0,0" Visibility="Collapsed" Click="AddProduct_Click"/>
+                <Button Content="Actualiser" Style="{StaticResource OutlineButton}" Margin="12,0,0,0" Click="RefreshBtn_Click"/>
+            </DockPanel>
+        </Border>
+
+        <Border Grid.Row="2" Style="{StaticResource CardBorder}">
+            <DataGrid x:Name="GridProducts" Style="{StaticResource AppDataGrid}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Photo" Width="70" Binding="{Binding ImageUrl, TargetNullValue='—'}"/>
+                    <DataGridTextColumn Header="Produit" Binding="{Binding Nom}" Width="*"/>
+                    <DataGridTextColumn Header="Catégorie" Binding="{Binding Categorie}" Width="120"/>
+                    <DataGridTextColumn Header="Établissement" Binding="{Binding BusinessName}" Width="160"/>
+                    <DataGridTextColumn Header="Prix" Binding="{Binding Prix, StringFormat={}{0:F2} TND}" Width="100"/>
+                    <DataGridTextColumn Header="Stock" Binding="{Binding Quantite}" Width="70"/>
+                    <DataGridTextColumn Header="Expire le" Binding="{Binding DateExpiration, StringFormat=dd/MM/yyyy}" Width="110"/>
+                    <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="80"/>
+                    <DataGridTemplateColumn Header="État" Width="100">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <controls:StatusBadge Status="{Binding EtatAffiche}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Actions" Width="230">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Tag="{Binding Id}" Content="Consulter" Style="{DynamicResource ConsulterButton}" Padding="8,4" Margin="0,0,6,0"
+                                            Click="ViewProduct_Click"/>
+                                    <Button Tag="{Binding Id}" Content="Retirer" Style="{DynamicResource DangerButton}" Padding="8,4"
+                                            Visibility="{Binding ShowRetireProduct, Converter={StaticResource BoolToVisibilityConverter}}"
+                                            Click="Delete_Click"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+    </Grid>
+</Page>

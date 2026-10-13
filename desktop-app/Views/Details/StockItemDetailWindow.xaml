@@ -1,0 +1,33 @@
+<Window x:Class="FoodWasteRelief.Views.Details.StockItemDetailWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:FoodWasteRelief.Controls"
+        Title="D�tail stock"
+        Style="{StaticResource AppWindow}" MinWidth="700" MinHeight="480" WindowStartupLocation="CenterOwner" SizeToContent="WidthAndHeight">
+    <Grid Margin="18">
+        <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="120"/><RowDefinition Height="120"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+        <Border Grid.Row="0" BorderBrush="#D9DEE3" BorderThickness="1" CornerRadius="8" Background="White" Padding="18" Margin="0,0,0,10">
+            <Grid>
+                <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+                <Grid.ColumnDefinitions><ColumnDefinition Width="150"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                <TextBlock Text="Article" Foreground="#6C757D"/><TextBlock Grid.Column="1" x:Name="NameText" FontWeight="SemiBold"/>
+                <TextBlock Grid.Row="1" Text="Quantit�" Foreground="#6C757D" Margin="0,8,0,0"/><TextBlock Grid.Row="1" Grid.Column="1" x:Name="QtyText" FontWeight="SemiBold" Margin="0,8,0,0"/>
+                <TextBlock Grid.Row="2" Text="Expiration" Foreground="#6C757D" Margin="0,8,0,0"/><TextBlock Grid.Row="2" Grid.Column="1" x:Name="ExpText" FontWeight="SemiBold" Margin="0,8,0,0"/>
+                <TextBlock Grid.Row="3" Text="Ajout� le" Foreground="#6C757D" Margin="0,8,0,0"/><TextBlock Grid.Row="3" Grid.Column="1" x:Name="AddedText" FontWeight="SemiBold" Margin="0,8,0,0"/>
+            </Grid>
+        </Border>
+        <TextBlock Grid.Row="1" Text="Produits li�s" FontWeight="SemiBold" Margin="0,0,0,6"/>
+        <DataGrid Grid.Row="2" x:Name="ProductsGrid" Style="{StaticResource AppDataGrid}" AutoGenerateColumns="False" Margin="0,0,0,8">
+            <DataGrid.Columns><DataGridTextColumn Header="Produit" Binding="{Binding Nom}" Width="*"/><DataGridTextColumn Header="Stock" Binding="{Binding Quantite}" Width="90"/></DataGrid.Columns>
+        </DataGrid>
+        <TextBlock Grid.Row="3" Text="Dons li�s" FontWeight="SemiBold" Margin="0,0,0,6" VerticalAlignment="Top"/>
+        <DataGrid Grid.Row="3" x:Name="DonationsGrid" Style="{StaticResource AppDataGrid}" AutoGenerateColumns="False" Margin="0,22,0,8">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Association" Binding="{Binding Association}" Width="*"/>
+                <DataGridTextColumn Header="Quantit�" Binding="{Binding Quantite}" Width="90"/>
+                <DataGridTemplateColumn Header="Statut" Width="120"><DataGridTemplateColumn.CellTemplate><DataTemplate><controls:StatusBadge Status="{Binding Status}"/></DataTemplate></DataGridTemplateColumn.CellTemplate></DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Grid.Row="4" Content="Fermer" Style="{StaticResource OutlineButton}" HorizontalAlignment="Right" Width="120" Click="Close_Click"/>
+    </Grid>
+</Window>

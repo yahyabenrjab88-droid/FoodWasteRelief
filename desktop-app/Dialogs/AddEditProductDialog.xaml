@@ -1,0 +1,56 @@
+<Window x:Class="FoodWasteRelief.Dialogs.AddEditProductDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Nouveau produit"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        MinWidth="520"
+        SizeToContent="Height"
+        Width="540"
+        Background="{StaticResource PageBackgroundBrush}">
+    <Border Margin="16" Padding="16" Style="{StaticResource CardBorder}">
+        <ScrollViewer MaxHeight="560" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <TextBlock Text="Créer un produit depuis le stock" FontSize="18" FontWeight="SemiBold"
+                           Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,12"/>
+
+                <TextBox x:Name="NomBox" Style="{StaticResource ModernTextBox}" materialDesign:HintAssist.Hint="Nom du produit *" Margin="0,0,0,8"/>
+                <TextBox x:Name="DescBox" Style="{StaticResource ModernTextBox}" materialDesign:HintAssist.Hint="Description" Height="72" TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,0,8"/>
+
+                <ComboBox x:Name="CategorieBox" Style="{StaticResource ModernComboBox}" materialDesign:HintAssist.Hint="Catégorie *" Margin="0,0,0,8"/>
+
+                <TextBox x:Name="PrixBox" Style="{StaticResource ModernTextBox}" materialDesign:HintAssist.Hint="Prix (TND) *" Margin="0,0,0,8"/>
+
+                <ComboBox x:Name="TypeBox" Style="{StaticResource ModernComboBox}" materialDesign:HintAssist.Hint="Type *" Margin="0,0,0,8">
+                    <ComboBoxItem Content="vente" IsSelected="True"/>
+                    <ComboBoxItem Content="don"/>
+                </ComboBox>
+
+                <DatePicker x:Name="ExpiryPicker" Style="{StaticResource ModernDatePicker}" materialDesign:HintAssist.Hint="Date d'expiration *" Margin="0,0,0,8"/>
+
+                <TextBlock Text="Source stock *" FontWeight="SemiBold" Margin="0,8,0,4" Foreground="{StaticResource TextPrimaryBrush}"/>
+                <ComboBox x:Name="StockCombo" Style="{StaticResource ModernComboBox}" DisplayMemberPath="Label" SelectionChanged="StockCombo_SelectionChanged" Margin="0,0,0,4"/>
+                <TextBlock x:Name="RemainingHint" Text="" Foreground="{StaticResource TextSecondaryBrush}" FontSize="12" Margin="0,0,0,8"/>
+
+                <TextBox x:Name="QtyListedBox" Style="{StaticResource ModernTextBox}" materialDesign:HintAssist.Hint="Quantité à mettre en vente *" TextChanged="QtyListedBox_TextChanged" Margin="0,0,0,8"/>
+
+                <TextBlock Text="Image (optionnel)" FontWeight="SemiBold" Margin="0,8,0,4"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                    <Button Content="Choisir une image" Style="{StaticResource OutlineButton}" Click="PickImage_Click"/>
+                    <TextBlock x:Name="ImagePathText" Margin="12,0,0,0" VerticalAlignment="Center" Foreground="{StaticResource TextSecondaryBrush}" TextTrimming="CharacterEllipsis" MaxWidth="320"/>
+                </StackPanel>
+                <Border Width="96" Height="96" Background="#E8F5E9" CornerRadius="6" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" HorizontalAlignment="Left" Margin="0,0,0,8">
+                    <Image x:Name="PreviewImage" Stretch="Uniform"/>
+                </Border>
+
+                <TextBlock x:Name="SaveErrorText" Foreground="{StaticResource DangerBrush}" TextWrapping="Wrap" Visibility="Collapsed" Margin="0,0,0,8"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0">
+                    <Button Content="Annuler" Style="{StaticResource OutlineButton}" Margin="0,0,10,0" IsCancel="True" Click="Cancel_Click"/>
+                    <Button Content="Enregistrer" Style="{StaticResource PrimaryButton}" Click="Save_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Border>
+</Window>

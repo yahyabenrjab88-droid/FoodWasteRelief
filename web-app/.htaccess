@@ -1,0 +1,13 @@
+Options -Indexes
+<IfModule mod_rewrite.c>
+RewriteEngine On
+# Root directory request → front controller
+RewriteRule ^$ public/index.php [L]
+# All other non-file, non-directory requests → front controller
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ public/index.php [L]
+</IfModule>
+<IfModule mod_authz_core.c>
+Require all granted
+</IfModule>

@@ -1,0 +1,48 @@
+<Page x:Class="FoodWasteRelief.Views.Pages.BusinessesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource PageBackgroundBrush}">
+    <Grid Margin="18">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Style="{StaticResource CardBorder}">
+            <DockPanel LastChildFill="False">
+                <TextBox x:Name="SearchBox" Width="320" Style="{StaticResource ModernTextBox}" TextChanged="SearchBox_TextChanged"/>
+                <ComboBox x:Name="StatusFilterBox" Width="180" Margin="12,0,0,0" Style="{StaticResource ModernComboBox}" SelectionChanged="StatusFilterBox_SelectionChanged">
+                    <ComboBoxItem Content="Tous"/>
+                    <ComboBoxItem Content="en_attente" IsSelected="True"/>
+                    <ComboBoxItem Content="valide"/>
+                    <ComboBoxItem Content="refuse"/>
+                </ComboBox>
+                <Button Content="Actualiser" Style="{StaticResource OutlineButton}" Margin="12,0,0,0" Click="RefreshBtn_Click"/>
+            </DockPanel>
+        </Border>
+
+        <Border Grid.Row="1" Style="{StaticResource CardBorder}">
+            <DataGrid x:Name="GridBusinesses" Style="{StaticResource AppDataGrid}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Etablissement" Binding="{Binding NomBusiness}" Width="*"/>
+                    <DataGridTextColumn Header="Ville" Binding="{Binding Ville}" Width="140"/>
+                    <DataGridTextColumn Header="Proprietaire" Binding="{Binding Owner.FullName}" Width="180"/>
+                    <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="120"/>
+                    <DataGridTemplateColumn Header="Actions" Width="370">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Tag="{Binding Id}" Content="Consulter" Margin="0,0,6,0" Style="{DynamicResource ConsulterButton}" Padding="8,4" Click="View_Click"/>
+                                    <Button Tag="{Binding Id}" Content="Valider" Margin="0,0,6,0" Style="{DynamicResource PrimaryButton}" Padding="8,4" Click="Approve_Click"/>
+                                    <Button Tag="{Binding Id}" Content="Refuser" Margin="0,0,6,0" Style="{DynamicResource DangerButton}" Padding="8,4" Click="Reject_Click"/>
+                                    <Button Tag="{Binding Id}" Content="Suppr." Style="{DynamicResource OutlineButton}" Padding="8,4" Click="Delete_Click"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+    </Grid>
+</Page>
+

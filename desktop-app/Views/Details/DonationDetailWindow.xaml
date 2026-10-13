@@ -1,0 +1,24 @@
+<Window x:Class="FoodWasteRelief.Views.Details.DonationDetailWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:FoodWasteRelief.Controls"
+        Title="D�tail don"
+        Style="{StaticResource AppWindow}" MinWidth="520" MinHeight="420" WindowStartupLocation="CenterOwner" SizeToContent="WidthAndHeight">
+    <Grid Margin="18">
+        <Border BorderBrush="#D9DEE3" BorderThickness="1" CornerRadius="8" Background="White" Padding="18">
+            <Grid>
+                <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+                <Grid.ColumnDefinitions><ColumnDefinition Width="150"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                <TextBlock Text="�tablissement" Foreground="#6C757D"/><TextBlock Grid.Column="1" x:Name="BusinessText" FontWeight="SemiBold"/>
+                <TextBlock Grid.Row="1" Text="Article" Foreground="#6C757D" Margin="0,8,0,0"/><TextBlock Grid.Row="1" Grid.Column="1" x:Name="ItemText" FontWeight="SemiBold" Margin="0,8,0,0"/>
+                <TextBlock Grid.Row="2" Text="Association" Foreground="#6C757D" Margin="0,8,0,0"/><TextBlock Grid.Row="2" Grid.Column="1" x:Name="AssociationText" FontWeight="SemiBold" Margin="0,8,0,0"/>
+                <TextBlock Grid.Row="3" Text="Quantit�" Foreground="#6C757D" Margin="0,8,0,0"/><TextBlock Grid.Row="3" Grid.Column="1" x:Name="QtyText" FontWeight="SemiBold" Margin="0,8,0,0"/>
+                <TextBlock Grid.Row="4" Text="Statut" Foreground="#6C757D" Margin="0,8,0,0"/><controls:StatusBadge Grid.Row="4" Grid.Column="1" x:Name="StatusBadge" Margin="0,8,0,0"/>
+                <TextBlock Grid.Row="5" Text="Cr�� le" Foreground="#6C757D" Margin="0,8,0,0"/><TextBlock Grid.Row="5" Grid.Column="1" x:Name="CreatedText" FontWeight="SemiBold" Margin="0,8,0,0"/>
+                <TextBlock Grid.Row="6" Text="Collect� le" Foreground="#6C757D" Margin="0,8,0,0"/><TextBlock Grid.Row="6" Grid.Column="1" x:Name="CollectedText" FontWeight="SemiBold" Margin="0,8,0,0"/>
+            </Grid>
+        </Border>
+        <Button x:Name="CollectBtn" Content="Marquer collect�" Style="{StaticResource PrimaryButton}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Visibility="Collapsed" Margin="0,12,0,0" Click="CollectBtn_Click"/>
+        <Button Content="Fermer" Style="{StaticResource OutlineButton}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="120" Margin="0,12,0,0" Click="Close_Click"/>
+    </Grid>
+</Window>

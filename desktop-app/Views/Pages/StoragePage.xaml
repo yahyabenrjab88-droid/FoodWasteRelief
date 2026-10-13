@@ -1,0 +1,48 @@
+<Page x:Class="FoodWasteRelief.Views.Pages.StoragePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource PageBackgroundBrush}">
+    <Grid Margin="18">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Style="{StaticResource CardBorder}">
+            <WrapPanel>
+                <TextBox x:Name="ItemNameBox" Width="220" Style="{StaticResource ModernTextBox}" />
+                <TextBox x:Name="QtyBox" Width="100" Margin="12,0,0,0" Style="{StaticResource ModernTextBox}" />
+                <ComboBox x:Name="UnitBox" Width="100" Margin="12,0,0,0" Style="{StaticResource ModernComboBox}">
+                    <ComboBoxItem Content="kg"/>
+                    <ComboBoxItem Content="L"/>
+                    <ComboBoxItem Content="units"/>
+                </ComboBox>
+                <DatePicker x:Name="ExpiryBox" Width="150" Margin="12,0,0,0" Style="{StaticResource ModernDatePicker}" />
+                <Button x:Name="AddOrUpdateBtn" Content="Ajouter" Margin="12,0,0,0" Style="{StaticResource AccentButton}" Click="AddOrUpdate_Click"/>
+                <Button Content="Actualiser" Margin="12,0,0,0" Style="{StaticResource OutlineButton}" Click="RefreshBtn_Click"/>
+            </WrapPanel>
+        </Border>
+
+        <Border Grid.Row="1" Style="{StaticResource CardBorder}">
+            <DataGrid x:Name="GridStorage" Style="{StaticResource AppDataGrid}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Item" Binding="{Binding ItemName}" Width="*"/>
+                    <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="100"/>
+                    <DataGridTextColumn Header="Unit" Binding="{Binding Unit}" Width="80"/>
+                    <DataGridTextColumn Header="Expiry" Binding="{Binding ExpiryDate, StringFormat=dd/MM/yyyy}" Width="130"/>
+                    <DataGridTemplateColumn Header="Actions" Width="290">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Tag="{Binding Id}" Content="Consulter" Margin="0,0,6,0" Style="{DynamicResource ConsulterButton}" Padding="8,4" Click="View_Click"/>
+                                    <Button Tag="{Binding Id}" Content="Edit" Margin="0,0,6,0" Style="{DynamicResource OutlineButton}" Padding="8,4" Click="Edit_Click"/>
+                                    <Button Tag="{Binding Id}" Content="Delete" Style="{DynamicResource DangerButton}" Padding="8,4" Click="Delete_Click"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+    </Grid>
+</Page>

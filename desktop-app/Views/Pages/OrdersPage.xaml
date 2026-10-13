@@ -1,0 +1,70 @@
+<Page x:Class="FoodWasteRelief.Views.Pages.OrdersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:controls="clr-namespace:FoodWasteRelief.Controls"
+      Background="{StaticResource PageBackgroundBrush}">
+    <Grid Margin="18">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Style="{StaticResource CardBorder}">
+            <DockPanel LastChildFill="False">
+                <TextBox x:Name="SearchBox" Width="320" Style="{StaticResource ModernTextBox}" TextChanged="SearchBox_TextChanged"/>
+                <ComboBox x:Name="StatusFilterBox" Width="200" Margin="12,0,0,0" Style="{StaticResource ModernComboBox}" SelectionChanged="StatusFilterBox_SelectionChanged">
+                    <ComboBoxItem Content="Tous" Tag="" IsSelected="True"/>
+                    <ComboBoxItem Content="En attente" Tag="en_attente"/>
+                    <ComboBoxItem Content="Confirmée" Tag="confirmee"/>
+                    <ComboBoxItem Content="Livrée" Tag="livree"/>
+                    <ComboBoxItem Content="Annulée" Tag="annulee"/>
+                </ComboBox>
+                <Button Content="Actualiser" Style="{StaticResource OutlineButton}" Margin="12,0,0,0" Click="RefreshBtn_Click"/>
+            </DockPanel>
+        </Border>
+        <Border Grid.Row="1" Style="{StaticResource CardBorder}">
+            <DataGrid x:Name="GridOrders" Style="{StaticResource AppDataGrid}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Date" Binding="{Binding DateCommande, StringFormat=dd/MM/yyyy HH:mm}" Width="150"/>
+                    <DataGridTextColumn Header="Client" Binding="{Binding ClientName}" Width="*"/>
+                    <DataGridTextColumn Header="Etablissement" Binding="{Binding BusinessName}" Width="180"/>
+                    <DataGridTextColumn Header="Total" Binding="{Binding Total, StringFormat={}{0:F2} TND}" Width="120"/>
+                    <DataGridTemplateColumn Header="Statut" Width="130">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <controls:StatusBadge Status="{Binding StatusLabelFr}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Voir" Width="130">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Consulter" Tag="{Binding Id}" Style="{DynamicResource ConsulterButton}" Padding="8,4" Click="ViewOrder_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn x:Name="BusinessOrdersActionsColumn" Header="Suivi" Width="280">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Content="Confirmer" Tag="{Binding Id}" Style="{DynamicResource PrimaryButton}" Padding="8,4" Margin="0,0,6,0"
+                                            Visibility="{Binding CanConfirmOrder, Converter={StaticResource BoolToVisibilityConverter}}" Click="ConfirmOrder_Click"/>
+                                    <Button Content="Livrée" Tag="{Binding Id}" Style="{DynamicResource OutlineButton}" Padding="8,4" Margin="0,0,6,0"
+                                            Visibility="{Binding CanMarkDelivered, Converter={StaticResource BoolToVisibilityConverter}}" Click="MarkDelivered_Click"/>
+                                    <Button Content="Annuler" Tag="{Binding Id}" Style="{DynamicResource DangerButton}" Padding="8,4"
+                                            Visibility="{Binding CanCancelOrder, Converter={StaticResource BoolToVisibilityConverter}}" Click="CancelOrder_Click"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn x:Name="AdminOrdersActionsColumn" Header="Actions" Width="100">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Tag="{Binding Id}" Content="Suppr." Style="{DynamicResource DangerButton}" Padding="8,4" Click="Delete_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+    </Grid>
+</Page>

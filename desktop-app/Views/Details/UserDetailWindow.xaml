@@ -1,0 +1,17 @@
+<Window x:Class="FoodWasteRelief.Views.Details.UserDetailWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:FoodWasteRelief.Controls"
+        Title="D�tail utilisateur" Style="{StaticResource AppWindow}" MinWidth="520" MinHeight="420" WindowStartupLocation="CenterOwner" SizeToContent="WidthAndHeight">
+    <Grid Margin="18"><Border BorderBrush="#D9DEE3" BorderThickness="1" CornerRadius="8" Background="White" Padding="18"><Grid>
+    <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+    <Grid.ColumnDefinitions><ColumnDefinition Width="160"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+    <TextBlock Text="Nom complet" Foreground="#6C757D"/><TextBlock Grid.Column="1" x:Name="FullNameText" FontWeight="SemiBold"/>
+    <TextBlock Grid.Row="1" Text="Email" Foreground="#6C757D" Margin="0,8,0,0"/><TextBlock Grid.Row="1" Grid.Column="1" x:Name="EmailText" FontWeight="SemiBold" Margin="0,8,0,0"/>
+    <TextBlock Grid.Row="2" Text="R�le" Foreground="#6C757D" Margin="0,8,0,0"/><controls:StatusBadge Grid.Row="2" Grid.Column="1" x:Name="RoleBadge" Margin="0,8,0,0"/>
+    <TextBlock Grid.Row="3" Text="Statut" Foreground="#6C757D" Margin="0,8,0,0"/><controls:StatusBadge Grid.Row="3" Grid.Column="1" x:Name="StatusBadge" Margin="0,8,0,0"/>
+    <TextBlock Grid.Row="4" Text="Inscription" Foreground="#6C757D" Margin="0,8,0,0"/><TextBlock Grid.Row="4" Grid.Column="1" x:Name="CreatedText" FontWeight="SemiBold" Margin="0,8,0,0"/>
+    <TextBlock Grid.Row="5" Grid.ColumnSpan="2" x:Name="ExtraLine1Text" Margin="0,12,0,0" TextWrapping="Wrap" Visibility="Collapsed"/>
+    <TextBlock Grid.Row="6" Grid.ColumnSpan="2" x:Name="ExtraLine2Text" Margin="0,4,0,0" TextWrapping="Wrap" Visibility="Collapsed"/>
+    </Grid></Border><Button Content="Fermer" Style="{StaticResource OutlineButton}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="120" Margin="0,12,0,0" Click="Close_Click"/></Grid>
+</Window>

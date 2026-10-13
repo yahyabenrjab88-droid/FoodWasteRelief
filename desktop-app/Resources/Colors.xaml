@@ -1,0 +1,45 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Color x:Key="PrimaryColor">#2D6A4F</Color>
+    <Color x:Key="AccentColor">#F4845F</Color>
+    <Color x:Key="DangerColor">#E63946</Color>
+    <Color x:Key="WarningColor">#E9C46A</Color>
+
+    <SolidColorBrush x:Key="PrimaryBrush" Color="#2D6A4F"/>
+    <SolidColorBrush x:Key="PrimaryLightBrush" Color="#52B788"/>
+    <SolidColorBrush x:Key="PrimaryDarkBrush" Color="#1B4332"/>
+    <SolidColorBrush x:Key="AccentBrush" Color="#F4845F"/>
+    <SolidColorBrush x:Key="AccentDarkBrush" Color="#D4633F"/>
+    <SolidColorBrush x:Key="WarningBrush" Color="#E9C46A"/>
+    <SolidColorBrush x:Key="WarningDarkBrush" Color="#C9A43A"/>
+    <SolidColorBrush x:Key="DangerBrush" Color="#E63946"/>
+    <SolidColorBrush x:Key="DangerDarkBrush" Color="#C42030"/>
+    <SolidColorBrush x:Key="SuccessBrush" Color="#52B788"/>
+    <SolidColorBrush x:Key="PageBackgroundBrush" Color="#F8F9F0"/>
+    <SolidColorBrush x:Key="SurfaceBrush" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="SidebarBrush" Color="#1B2D23"/>
+    <SolidColorBrush x:Key="SidebarHoverBrush" Color="#2D4A35"/>
+    <SolidColorBrush x:Key="SidebarActiveBrush" Color="#2D6A4F"/>
+    <SolidColorBrush x:Key="SidebarAccentBrush" Color="#52B788"/>
+    <SolidColorBrush x:Key="TextPrimaryBrush" Color="#1B2D23"/>
+    <SolidColorBrush x:Key="TextSecondaryBrush" Color="#6B7C72"/>
+    <SolidColorBrush x:Key="TextOnDarkBrush" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="BorderBrush" Color="#E2E8E4"/>
+    <SolidColorBrush x:Key="DividerBrush" Color="#F0F4F2"/>
+    <SolidColorBrush x:Key="RowAlternateBrush" Color="#F8F9F0"/>
+    <SolidColorBrush x:Key="RowHoverBrush" Color="#E8F5E9"/>
+    <SolidColorBrush x:Key="StatusPendingBrush" Color="#E9C46A"/>
+    <SolidColorBrush x:Key="StatusValidBrush" Color="#52B788"/>
+    <SolidColorBrush x:Key="StatusRefusedBrush" Color="#E63946"/>
+    <SolidColorBrush x:Key="StatusDeliveredBrush" Color="#2D6A4F"/>
+    <SolidColorBrush x:Key="StatusVenteBrush" Color="#F4845F"/>
+    <SolidColorBrush x:Key="StatusDonBrush" Color="#52B788"/>
+    <SolidColorBrush x:Key="KpiCard1Brush" Color="#EBF5F0"/>
+    <SolidColorBrush x:Key="KpiCard2Brush" Color="#FFF4EE"/>
+    <SolidColorBrush x:Key="KpiCard3Brush" Color="#FFFBEE"/>
+    <SolidColorBrush x:Key="KpiCard4Brush" Color="#EEF4FF"/>
+
+    <!-- Backward-compatible aliases -->
+    <SolidColorBrush x:Key="BackgroundBrush" Color="#F8F9F0"/>
+    <SolidColorBrush x:Key="SecondaryBrush" Color="#52B788"/>
+</ResourceDictionary>

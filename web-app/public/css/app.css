@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap');
+
+:root {
+    --primary: #2D6A4F;
+    --primary-light: #40916C;
+    --primary-pale: #E6F2ED;
+    --accent: #F4A261;
+    --light-green: #95D5B2;
+    --dark: #1B1B1B;
+    --surface: #F8F9FA;
+    --radius: 12px;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--dark);
+    background-color: var(--surface);
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--primary);
+}
+
+.text-primary { color: var(--primary) !important; }
+.text-accent { color: var(--accent) !important; }
+.bg-primary { background-color: var(--primary) !important; }
+.bg-accent { background-color: var(--accent) !important; }
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+.btn-primary:hover {
+    background-color: var(--primary-light);
+    border-color: var(--primary-light);
+}
+.btn-outline-primary {
+    color: var(--primary);
+    border-color: var(--primary);
+}
+.btn-outline-primary:hover {
+    background-color: var(--primary);
+    color: #fff;
+}
+.btn-accent {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+.btn-accent:hover {
+    background-color: #E76F51;
+    border-color: #E76F51;
+    color: #fff;
+}
+
+/* Forms */
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 0.25rem rgba(45, 106, 79, 0.25);
+}
+.form-floating label {
+    color: #6c757d;
+}
+
+/* Sidebar styling */
+.sidebar {
+    min-height: 100vh;
+    background: #fff;
+    border-right: 1px solid #e9ecef;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: all 0.3s;
+}
+.sidebar .nav-link {
+    color: #495057;
+    border-radius: 8px;
+    margin: 4px 16px;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+.sidebar .nav-link:hover {
+    background-color: var(--surface);
+    color: var(--primary);
+}
+.sidebar .nav-link.active {
+    background-color: var(--primary-pale);
+    color: var(--primary);
+    font-weight: 600;
+}
+.sidebar .nav-link i {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+}
+.main-content {
+    margin-left: 250px;
+    padding: 24px;
+    min-height: 100vh;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        margin-left: -250px;
+    }
+    .sidebar.show {
+        margin-left: 0;
+    }
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+/* KPI Cards */
+.kpi-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+.kpi-icon.primary { background: var(--primary-pale); color: var(--primary); }
+.kpi-icon.accent { background: rgba(244, 162, 97, 0.2); color: var(--accent); }
+
+/* Expiry Badges */
+.expiry-ok { color: var(--primary); font-weight: 600; }
+.expiry-warning { color: var(--accent); font-weight: 600; }
+.expiry-danger { color: #dc3545; font-weight: 600; }
+
+/* Hero Section */
+.hero-gradient {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--light-green) 100%);
+    color: white;
+}
+
+/* Custom Table Styles */
+.table-hover tbody tr:hover {
+    background-color: var(--primary-pale);
+}
+.table thead th {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    color: #6c757d;
+}
+
+/* Role Badges */
+.badge-admin { background-color: #dc3545; }
+.badge-business { background-color: #0d6efd; }
+.badge-association { background-color: #6f42c1; }
+.badge-client { background-color: var(--primary); }
+
+/* Animation Utils */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

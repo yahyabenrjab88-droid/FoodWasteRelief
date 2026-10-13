@@ -1,0 +1,26 @@
+# =====================
+# Desktop App (C# / WPF)
+# =====================
+desktop-app/bin/
+desktop-app/obj/
+desktop-app/.vs/
+desktop-app/_build_verify/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# =====================
+# Web App (PHP)
+# =====================
+web-app/public/uploads/*
+!web-app/public/uploads/.gitkeep
+web-app/config/database.php
+
+# =====================
+# General
+# =====================
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
